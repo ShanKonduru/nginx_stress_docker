@@ -1,2 +1,12 @@
 @echo off
-docker exec -it nginx-stress-container /usr/share/nginx/load_test.sh
+setlocal enabledelayedexpansion
+
+set URL=http://localhost:5000
+
+:loop
+REM echo %date% %time%
+curl -o nul -s -w "Total time: %%{time_total} seconds\n" %URL%
+timeout /t 1 /nobreak > nul
+goto loop
+
+endlocal
