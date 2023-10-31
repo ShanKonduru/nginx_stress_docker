@@ -5,6 +5,7 @@ FROM nginx
 RUN apt-get update
 RUN apt-get install -y stress 
 RUN apt-get install -y stress-ng
+RUN apt-get install -y htop procps
 
 # Copy the custom index.html file to NGINX's web root
 COPY index.html /usr/share/nginx/html
